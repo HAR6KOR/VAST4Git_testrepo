@@ -1,0 +1,753 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Specifications toolVersion="V6.1.4_CS_SR48" schemaVersion="6.1.0.0">
+	<Layout graphicOID="-1" flexibleCreated="false" hidePinNames="false" hideName="false" hideClassName="false" hideIcon="false">
+		<LineStyle width="1" type="LineSolid">
+			<Color red="0" green="0" blue="0"/>
+		</LineStyle>
+		<FillColor red="65535" green="65535" blue="65535"/>
+		<Position x="100" y="100"/>
+		<LabelPosition x="100" y="150"/>
+		<Interfaces/>
+		<Size x="90" y="240"/>
+		<Icon>
+			<Size x="90" y="240"/>
+		</Icon>
+	</Layout>
+	<Specification name="Main" public="public">
+		<CCodeSpecification>
+			<CCode>
+				<CodeVariant target="Default" generator="undefined">
+					<HeaderBlock></HeaderBlock>
+					<MethodBodies/>
+				</CodeVariant>
+				<CodeVariant target="ES1112" generator="Physical">
+					<HeaderBlock>/******************************************************************************/&#13;
+/*                                                                            */&#13;
+/*      Libarary function for VT8X bypass configuration                       */&#13;
+/*                                                                            */&#13;
+/*      File:           VT8XUsap.h                                            */&#13;
+/*                                                                            */&#13;
+/*      Autor:          ETAS/ESW-LR                                           */&#13;
+/*                                                                            */&#13;
+/*      Datum:          03/1997                                               */&#13;
+/*                                                                            */&#13;
+/*      Projekt:        VT8X-Bypass                                           */&#13;
+/*                                                                            */&#13;
+/*      COPYRIGHT by ETAS GMBH &amp; Co.KG Stuttgart                              */&#13;
+/*                                                                            */&#13;
+/* Edition History                                                            */&#13;
+/*  #   Date    Changes                                                       */&#13;
+/* -- -------- -----------------------------------------------    ----------- */&#13;
+/* 01 98/07    Basic Installation                                             */&#13;
+/* 02 98/10    Additional irq mode                                            */&#13;
+/******************************************************************************/&#13;
+#ifndef VT8X_USAP_H&#13;
+#define VT8X_USAP_H&#13;
+&#13;
+/* irq levels */&#13;
+#ifndef VT8X_USAP_C&#13;
+#define IRQ_LEV_VT8X_USAP                5&#13;
+#define IRQ_VEC_VT8X_SIMU_REQ           91&#13;
+#define IRQ_VEC_VCAN0                   64&#13;
+#define IRQ_VEC_VCAN1                   65&#13;
+#define IRQ_VEC_VCAN2                   66&#13;
+#define IRQ_VEC_VCAN3                   67&#13;
+#define IRQ_VEC_VCAN4                   68&#13;
+#define IRQ_VEC_VCAN5                   77&#13;
+#define IRQ_VEC_VCAN6                   78&#13;
+#define IRQ_VEC_VCAN7                   79&#13;
+#endif&#13;
+&#13;
+/* debug switches */&#13;
+#define NO_DBG                          0xFF       /* 0xFF -&gt; no debug output */&#13;
+#define DBG                             0x01       /* normal debug output     */&#13;
+#define DBG_MBX                         0x02       /* mailBox debug           */&#13;
+#define DBG_BP                          0x04       /* bypass debug            */&#13;
+#define DBG_IRQ                         0x08       /* irq debug               */&#13;
+#define DBG_ALLWAYS                     0x00&#13;
+&#13;
+/* ASCET-SD specific basic declaration */&#13;
+#ifdef VT8X_USAP_C&#13;
+#include "..\vt8x_t8\xpasspkt.h"&#13;
+#else&#13;
+typedef unsigned char  uchar;&#13;
+typedef unsigned long  ulong;&#13;
+typedef struct {&#13;
+    unsigned long Addr,&#13;
+                  ByteSize;&#13;
+    } VT8X_SIGNAL;&#13;
+#endif&#13;
+&#13;
+/******************************************************************************/&#13;
+/*                     USAP functions                                         */&#13;
+/******************************************************************************/&#13;
+void           BoardSetup(void);&#13;
+unsigned short BoardVectorFetch(unsigned short level);&#13;
+&#13;
+/******************************************************************************/&#13;
+/*                     bypass functions                                       */&#13;
+/******************************************************************************/&#13;
+ulong VT8XInit(void);&#13;
+ulong VT8XExit(void);&#13;
+ulong VT8XStartCommunication(void);&#13;
+ulong VT8XWriteErrorMemory(uchar Len, uchar *Bytes);&#13;
+ulong VT8XBpWriteTable(uchar SdTskId,  uchar CpuTskId, uchar TypeOrPrio, &#13;
+                       uchar InSigNo,  VT8X_SIGNAL *InSigTab, &#13;
+                       uchar OutSigNo, VT8X_SIGNAL *OutSigTab);&#13;
+ulong VT8XBpStart(void);&#13;
+ulong VT8XBpStop(void);&#13;
+ulong VT8XLookForRequest(void);&#13;
+void  VT8XIntHandler(void);&#13;
+ulong VT8XBpRead(uchar CpuTskId, uchar *ByteLen, uchar *Data);&#13;
+ulong VT8XBpWrite(uchar CpuTskId, uchar ByteLen, uchar *Data);&#13;
+ulong VT8XGetError (char *errDscr);&#13;
+&#13;
+/******************************************************************************/&#13;
+/*                     lib configuration                                      */&#13;
+/******************************************************************************/&#13;
+void  VT8XActivateT8VmeDrv(void);&#13;
+void  VT8XSuspendT8VmeDrv(void);&#13;
+void  VT8XSetXPassLog(void);&#13;
+void  VT8XSetTerminalLog(void);&#13;
+void  VT8XSimulateECU(void);&#13;
+void  VT8XSetDbgFilter(char mask);&#13;
+void  VT8XSetBypassTaskTime(ulong timeMSec);&#13;
+void  VT8XSetCheckXPassPosResponse(ulong check);&#13;
+void  VT8XSetCheckXPassChecksum(ulong check);&#13;
+ulong VT8XGetMailBoxState(void);&#13;
+void  debug(uchar dbgLevel, char *formatString, ...);&#13;
+#endif&#13;
+</HeaderBlock>
+					<MethodBodies/>
+				</CodeVariant>
+				<CodeVariant target="ES1130" generator="Physical">
+					<HeaderBlock>/******************************************************************************/&#13;
+/*                                                                            */&#13;
+/*      Libarary function for VT8X bypass configuration                       */&#13;
+/*                                                                            */&#13;
+/*      File:           VT8XUsap.h                                            */&#13;
+/*                                                                            */&#13;
+/*      Autor:          ETAS/ESW-LR                                           */&#13;
+/*                                                                            */&#13;
+/*      Datum:          03/1997                                               */&#13;
+/*                                                                            */&#13;
+/*      Projekt:        VT8X-Bypass                                           */&#13;
+/*                                                                            */&#13;
+/*      COPYRIGHT by ETAS GMBH &amp; Co.KG Stuttgart                              */&#13;
+/*                                                                            */&#13;
+/* Edition History                                                            */&#13;
+/*  #   Date    Changes                                                       */&#13;
+/* -- -------- -----------------------------------------------    ----------- */&#13;
+/* 01 98/07    Basic Installation                                             */&#13;
+/* 02 98/10    Additional irq mode                                            */&#13;
+/******************************************************************************/&#13;
+#ifndef VT8X_USAP_H&#13;
+#define VT8X_USAP_H&#13;
+&#13;
+/* irq levels */&#13;
+#ifndef VT8X_USAP_C&#13;
+#define IRQ_LEV_VT8X_USAP                5&#13;
+#define IRQ_VEC_VT8X_SIMU_REQ           91&#13;
+#define IRQ_VEC_VCAN0                   64&#13;
+#define IRQ_VEC_VCAN1                   65&#13;
+#define IRQ_VEC_VCAN2                   66&#13;
+#define IRQ_VEC_VCAN3                   67&#13;
+#define IRQ_VEC_VCAN4                   68&#13;
+#define IRQ_VEC_VCAN5                   77&#13;
+#define IRQ_VEC_VCAN6                   78&#13;
+#define IRQ_VEC_VCAN7                   79&#13;
+#endif&#13;
+&#13;
+/* debug switches */&#13;
+#define NO_DBG                          0xFF       /* 0xFF -&gt; no debug output */&#13;
+#define DBG                             0x01       /* normal debug output     */&#13;
+#define DBG_MBX                         0x02       /* mailBox debug           */&#13;
+#define DBG_BP                          0x04       /* bypass debug            */&#13;
+#define DBG_IRQ                         0x08       /* irq debug               */&#13;
+#define DBG_ALLWAYS                     0x00&#13;
+&#13;
+/* ASCET-SD specific basic declaration */&#13;
+#ifndef VT8X_USAP_C&#13;
+typedef unsigned char  uchar;&#13;
+typedef unsigned long  ulong;&#13;
+typedef struct {&#13;
+    unsigned long Addr,&#13;
+                  ByteSize;&#13;
+    } VT8X_SIGNAL;&#13;
+#endif&#13;
+&#13;
+/******************************************************************************/&#13;
+/*                     USAP functions                                         */&#13;
+/******************************************************************************/&#13;
+void           BoardSetup(void);&#13;
+unsigned short BoardVectorFetch(unsigned short level);&#13;
+&#13;
+/******************************************************************************/&#13;
+/*                     bypass functions                                       */&#13;
+/******************************************************************************/&#13;
+ulong VT8XInit(void);&#13;
+ulong VT8XExit(void);&#13;
+ulong VT8XStartCommunication(void);&#13;
+ulong VT8XWriteErrorMemory(uchar Len, uchar *Bytes);&#13;
+ulong VT8XBpWriteTable(uchar SdTskId,  uchar CpuTskId, uchar TypeOrPrio, &#13;
+                       uchar InSigNo,  VT8X_SIGNAL *InSigTab, &#13;
+                       uchar OutSigNo, VT8X_SIGNAL *OutSigTab);&#13;
+ulong VT8XBpStart(void);&#13;
+ulong VT8XBpStop(void);&#13;
+ulong VT8XLookForRequest(void);&#13;
+void  VT8XIntHandler(void);&#13;
+ulong VT8XBpRead(uchar CpuTskId, uchar *ByteLen, uchar *Data);&#13;
+ulong VT8XBpWrite(uchar CpuTskId, uchar ByteLen, uchar *Data);&#13;
+ulong VT8XGetError (char *errDscr);&#13;
+&#13;
+/******************************************************************************/&#13;
+/*                     lib configuration                                      */&#13;
+/******************************************************************************/&#13;
+void  VT8XActivateT8VmeDrv(void);&#13;
+void  VT8XSuspendT8VmeDrv(void);&#13;
+void  VT8XSetXPassLog(void);&#13;
+void  VT8XSetTerminalLog(void);&#13;
+void  VT8XSetDbgFilter(char mask);&#13;
+void  VT8XSetRxBlinkSID(char sid);&#13;
+void  VT8XSetBypassTaskTime(ulong timeMSec);&#13;
+void  VT8XSetCheckXPassPosResponse(ulong check);&#13;
+void  VT8XSetCheckXPassChecksum(ulong check);&#13;
+ulong VT8XGetMailBoxState(void);&#13;
+void  debug(uchar dbgLevel, char *formatString, ...);&#13;
+#endif&#13;
+</HeaderBlock>
+					<MethodBodies/>
+				</CodeVariant>
+				<CodeVariant target="PC" generator="Physical">
+					<HeaderBlock></HeaderBlock>
+					<MethodBodies/>
+				</CodeVariant>
+				<CodeVariant target="PPC" generator="Physical">
+					<HeaderBlock>/******************************************************************************/&#13;
+/*                                                                            */&#13;
+/*      Libarary function for VT8X bypass configuration                       */&#13;
+/*                                                                            */&#13;
+/*      File:           VT8XUsap.h                                            */&#13;
+/*                                                                            */&#13;
+/*      Autor:          ETAS/ESW-LR                                           */&#13;
+/*                                                                            */&#13;
+/*      Datum:          03/1997                                               */&#13;
+/*                                                                            */&#13;
+/*      Projekt:        VT8X-Bypass                                           */&#13;
+/*                                                                            */&#13;
+/*      COPYRIGHT by ETAS GMBH &amp; Co.KG Stuttgart                              */&#13;
+/*                                                                            */&#13;
+/* Edition History                                                            */&#13;
+/*  #   Date    Changes                                                       */&#13;
+/* -- -------- -----------------------------------------------    ----------- */&#13;
+/* 01 98/07    Basic Installation                                             */&#13;
+/* 02 98/10    Additional irq mode                                            */&#13;
+/******************************************************************************/&#13;
+#ifndef VT8X_USAP_H&#13;
+#define VT8X_USAP_H&#13;
+&#13;
+/* irq levels */&#13;
+#ifndef VT8X_USAP_C&#13;
+#define IRQ_LEV_VT8X_USAP                5&#13;
+#define IRQ_VEC_VT8X_SIMU_REQ           91&#13;
+#define IRQ_VEC_VCAN0                   64&#13;
+#define IRQ_VEC_VCAN1                   65&#13;
+#define IRQ_VEC_VCAN2                   66&#13;
+#define IRQ_VEC_VCAN3                   67&#13;
+#define IRQ_VEC_VCAN4                   68&#13;
+#define IRQ_VEC_VCAN5                   77&#13;
+#define IRQ_VEC_VCAN6                   78&#13;
+#define IRQ_VEC_VCAN7                   79&#13;
+#endif&#13;
+&#13;
+/* debug switches */&#13;
+#define NO_DBG                          0xFF       /* 0xFF -&gt; no debug output */&#13;
+#define DBG                             0x01       /* normal debug output     */&#13;
+#define DBG_MBX                         0x02       /* mailBox debug           */&#13;
+#define DBG_BP                          0x04       /* bypass debug            */&#13;
+#define DBG_IRQ                         0x08       /* irq debug               */&#13;
+#define DBG_XP                          0x10       /* xpass log               */&#13;
+#define DBG_ALLWAYS                     0x00&#13;
+&#13;
+/* ASCET-SD specific basic declaration */&#13;
+#ifdef VT8X_USAP_C&#13;
+#include "..\vt8x_t8\xpasspkt.h"&#13;
+#else&#13;
+typedef unsigned char  uchar;&#13;
+typedef unsigned long  ulong;&#13;
+typedef struct {&#13;
+    unsigned long Addr,&#13;
+                  ByteSize;&#13;
+    } VT8X_SIGNAL;&#13;
+#endif&#13;
+&#13;
+/******************************************************************************/&#13;
+/*                     USAP functions                                         */&#13;
+/******************************************************************************/&#13;
+void           BoardSetup(void);&#13;
+unsigned short BoardVectorFetch(unsigned short level);&#13;
+&#13;
+/******************************************************************************/&#13;
+/*                     bypass functions                                       */&#13;
+/******************************************************************************/&#13;
+ulong VT8XInit(void);&#13;
+ulong VT8XStartCommunication(void);&#13;
+ulong VT8XWriteErrorMemory(uchar Len, uchar *Bytes);&#13;
+ulong VT8XBpWriteTable(uchar SdTskId,  uchar CpuTskId, uchar TypeOrPrio, &#13;
+                       uchar InSigNo,  VT8X_SIGNAL *InSigTab, &#13;
+                       uchar OutSigNo, VT8X_SIGNAL *OutSigTab);&#13;
+ulong VT8XBpStart(void);&#13;
+ulong VT8XBpStop(void);&#13;
+ulong VT8XLookForRequest(void);&#13;
+void  VT8XIntHandler(void);&#13;
+ulong VT8XBpRead(uchar CpuTskId, uchar *ByteLen, uchar *Data);&#13;
+ulong VT8XBpWrite(uchar CpuTskId, uchar ByteLen, uchar *Data);&#13;
+ulong VT8XGetError (char *errDscr);&#13;
+&#13;
+/******************************************************************************/&#13;
+/*                     lib configuration                                      */&#13;
+/******************************************************************************/&#13;
+void  VT8XSuspendT8VmeDrv(void);&#13;
+void  VT8XSetXPassLog(void);&#13;
+void  VT8XSetTerminalLog(void);&#13;
+void  VT8XSimulateECU(void);&#13;
+void  VT8XSetDbgFilter(char mask);&#13;
+void  VT8XSetBypassTaskTime(ulong timeMSec);&#13;
+void  VT8XSetCheckXPassPosResponse(ulong check);&#13;
+void  VT8XSetCheckXPassChecksum(ulong check);&#13;
+ulong VT8XGetMailBoxState(void);&#13;
+void  debug(uchar dbgLevel, char *formatString, ...);&#13;
+#endif&#13;
+</HeaderBlock>
+					<MethodBodies/>
+				</CodeVariant>
+				<CodeVariant target="ES1112" generator="Implementation" implementationOID="_040qm002a8001l870k4g73v5ln400" implementationName="Impl">
+					<HeaderBlock>/******************************************************************************/&#13;
+/*                                                                            */&#13;
+/*      Libarary function for VT8X bypass configuration                       */&#13;
+/*                                                                            */&#13;
+/*      File:           VT8XUsap.h                                            */&#13;
+/*                                                                            */&#13;
+/*      Autor:          ETAS/ESW-LR                                           */&#13;
+/*                                                                            */&#13;
+/*      Datum:          03/1997                                               */&#13;
+/*                                                                            */&#13;
+/*      Projekt:        VT8X-Bypass                                           */&#13;
+/*                                                                            */&#13;
+/*      COPYRIGHT by ETAS GMBH &amp; Co.KG Stuttgart                              */&#13;
+/*                                                                            */&#13;
+/* Edition History                                                            */&#13;
+/*  #   Date    Changes                                                       */&#13;
+/* -- -------- -----------------------------------------------    ----------- */&#13;
+/* 01 98/07    Basic Installation                                             */&#13;
+/* 02 98/10    Additional irq mode                                            */&#13;
+/******************************************************************************/&#13;
+#ifndef VT8X_USAP_H&#13;
+#define VT8X_USAP_H&#13;
+&#13;
+/* irq levels */&#13;
+#ifndef VT8X_USAP_C&#13;
+#define IRQ_LEV_VT8X_USAP                5&#13;
+#define IRQ_VEC_VT8X_SIMU_REQ           91&#13;
+#define IRQ_VEC_VCAN0                   64&#13;
+#define IRQ_VEC_VCAN1                   65&#13;
+#define IRQ_VEC_VCAN2                   66&#13;
+#define IRQ_VEC_VCAN3                   67&#13;
+#define IRQ_VEC_VCAN4                   68&#13;
+#define IRQ_VEC_VCAN5                   77&#13;
+#define IRQ_VEC_VCAN6                   78&#13;
+#define IRQ_VEC_VCAN7                   79&#13;
+#endif&#13;
+&#13;
+/* debug switches */&#13;
+#define NO_DBG                          0xFF       /* 0xFF -&gt; no debug output */&#13;
+#define DBG                             0x01       /* normal debug output     */&#13;
+#define DBG_MBX                         0x02       /* mailBox debug           */&#13;
+#define DBG_BP                          0x04       /* bypass debug            */&#13;
+#define DBG_IRQ                         0x08       /* irq debug               */&#13;
+#define DBG_ALLWAYS                     0x00&#13;
+&#13;
+/* ASCET-SD specific basic declaration */&#13;
+#ifdef VT8X_USAP_C&#13;
+#include "..\vt8x_t8\xpasspkt.h"&#13;
+#else&#13;
+typedef unsigned char  uchar;&#13;
+typedef unsigned long  ulong;&#13;
+typedef struct {&#13;
+    unsigned long Addr,&#13;
+                  ByteSize;&#13;
+    } VT8X_SIGNAL;&#13;
+#endif&#13;
+&#13;
+/******************************************************************************/&#13;
+/*                     USAP functions                                         */&#13;
+/******************************************************************************/&#13;
+void           BoardSetup(void);&#13;
+unsigned short BoardVectorFetch(unsigned short level);&#13;
+&#13;
+/******************************************************************************/&#13;
+/*                     bypass functions                                       */&#13;
+/******************************************************************************/&#13;
+ulong VT8XInit(void);&#13;
+ulong VT8XExit(void);&#13;
+ulong VT8XStartCommunication(void);&#13;
+ulong VT8XWriteErrorMemory(uchar Len, uchar *Bytes);&#13;
+ulong VT8XBpWriteTable(uchar SdTskId,  uchar CpuTskId, uchar TypeOrPrio, &#13;
+                       uchar InSigNo,  VT8X_SIGNAL *InSigTab, &#13;
+                       uchar OutSigNo, VT8X_SIGNAL *OutSigTab);&#13;
+ulong VT8XBpStart(void);&#13;
+ulong VT8XBpStop(void);&#13;
+ulong VT8XLookForRequest(void);&#13;
+void  VT8XIntHandler(void);&#13;
+ulong VT8XBpRead(uchar CpuTskId, uchar *ByteLen, uchar *Data);&#13;
+ulong VT8XBpWrite(uchar CpuTskId, uchar ByteLen, uchar *Data);&#13;
+ulong VT8XGetError (char *errDscr);&#13;
+&#13;
+/******************************************************************************/&#13;
+/*                     lib configuration                                      */&#13;
+/******************************************************************************/&#13;
+void  VT8XActivateT8VmeDrv(void);&#13;
+void  VT8XSuspendT8VmeDrv(void);&#13;
+void  VT8XSetXPassLog(void);&#13;
+void  VT8XSetTerminalLog(void);&#13;
+void  VT8XSimulateECU(void);&#13;
+void  VT8XSetDbgFilter(char mask);&#13;
+void  VT8XSetBypassTaskTime(ulong timeMSec);&#13;
+void  VT8XSetCheckXPassPosResponse(ulong check);&#13;
+void  VT8XSetCheckXPassChecksum(ulong check);&#13;
+ulong VT8XGetMailBoxState(void);&#13;
+void  debug(uchar dbgLevel, char *formatString, ...);&#13;
+#endif&#13;
+</HeaderBlock>
+					<MethodBodies/>
+				</CodeVariant>
+				<CodeVariant target="ES1112" generator="Quantized" implementationOID="_040qm002a8001l870k4g73v5ln400" implementationName="Impl">
+					<HeaderBlock>/******************************************************************************/&#13;
+/*                                                                            */&#13;
+/*      Libarary function for VT8X bypass configuration                       */&#13;
+/*                                                                            */&#13;
+/*      File:           VT8XUsap.h                                            */&#13;
+/*                                                                            */&#13;
+/*      Autor:          ETAS/ESW-LR                                           */&#13;
+/*                                                                            */&#13;
+/*      Datum:          03/1997                                               */&#13;
+/*                                                                            */&#13;
+/*      Projekt:        VT8X-Bypass                                           */&#13;
+/*                                                                            */&#13;
+/*      COPYRIGHT by ETAS GMBH &amp; Co.KG Stuttgart                              */&#13;
+/*                                                                            */&#13;
+/* Edition History                                                            */&#13;
+/*  #   Date    Changes                                                       */&#13;
+/* -- -------- -----------------------------------------------    ----------- */&#13;
+/* 01 98/07    Basic Installation                                             */&#13;
+/* 02 98/10    Additional irq mode                                            */&#13;
+/******************************************************************************/&#13;
+#ifndef VT8X_USAP_H&#13;
+#define VT8X_USAP_H&#13;
+&#13;
+/* irq levels */&#13;
+#ifndef VT8X_USAP_C&#13;
+#define IRQ_LEV_VT8X_USAP                5&#13;
+#define IRQ_VEC_VT8X_SIMU_REQ           91&#13;
+#define IRQ_VEC_VCAN0                   64&#13;
+#define IRQ_VEC_VCAN1                   65&#13;
+#define IRQ_VEC_VCAN2                   66&#13;
+#define IRQ_VEC_VCAN3                   67&#13;
+#define IRQ_VEC_VCAN4                   68&#13;
+#define IRQ_VEC_VCAN5                   77&#13;
+#define IRQ_VEC_VCAN6                   78&#13;
+#define IRQ_VEC_VCAN7                   79&#13;
+#endif&#13;
+&#13;
+/* debug switches */&#13;
+#define NO_DBG                          0xFF       /* 0xFF -&gt; no debug output */&#13;
+#define DBG                             0x01       /* normal debug output     */&#13;
+#define DBG_MBX                         0x02       /* mailBox debug           */&#13;
+#define DBG_BP                          0x04       /* bypass debug            */&#13;
+#define DBG_IRQ                         0x08       /* irq debug               */&#13;
+#define DBG_ALLWAYS                     0x00&#13;
+&#13;
+/* ASCET-SD specific basic declaration */&#13;
+#ifdef VT8X_USAP_C&#13;
+#include "..\vt8x_t8\xpasspkt.h"&#13;
+#else&#13;
+typedef unsigned char  uchar;&#13;
+typedef unsigned long  ulong;&#13;
+typedef struct {&#13;
+    unsigned long Addr,&#13;
+                  ByteSize;&#13;
+    } VT8X_SIGNAL;&#13;
+#endif&#13;
+&#13;
+/******************************************************************************/&#13;
+/*                     USAP functions                                         */&#13;
+/******************************************************************************/&#13;
+void           BoardSetup(void);&#13;
+unsigned short BoardVectorFetch(unsigned short level);&#13;
+&#13;
+/******************************************************************************/&#13;
+/*                     bypass functions                                       */&#13;
+/******************************************************************************/&#13;
+ulong VT8XInit(void);&#13;
+ulong VT8XExit(void);&#13;
+ulong VT8XStartCommunication(void);&#13;
+ulong VT8XWriteErrorMemory(uchar Len, uchar *Bytes);&#13;
+ulong VT8XBpWriteTable(uchar SdTskId,  uchar CpuTskId, uchar TypeOrPrio, &#13;
+                       uchar InSigNo,  VT8X_SIGNAL *InSigTab, &#13;
+                       uchar OutSigNo, VT8X_SIGNAL *OutSigTab);&#13;
+ulong VT8XBpStart(void);&#13;
+ulong VT8XBpStop(void);&#13;
+ulong VT8XLookForRequest(void);&#13;
+void  VT8XIntHandler(void);&#13;
+ulong VT8XBpRead(uchar CpuTskId, uchar *ByteLen, uchar *Data);&#13;
+ulong VT8XBpWrite(uchar CpuTskId, uchar ByteLen, uchar *Data);&#13;
+ulong VT8XGetError (char *errDscr);&#13;
+&#13;
+/******************************************************************************/&#13;
+/*                     lib configuration                                      */&#13;
+/******************************************************************************/&#13;
+void  VT8XActivateT8VmeDrv(void);&#13;
+void  VT8XSuspendT8VmeDrv(void);&#13;
+void  VT8XSetXPassLog(void);&#13;
+void  VT8XSetTerminalLog(void);&#13;
+void  VT8XSimulateECU(void);&#13;
+void  VT8XSetDbgFilter(char mask);&#13;
+void  VT8XSetBypassTaskTime(ulong timeMSec);&#13;
+void  VT8XSetCheckXPassPosResponse(ulong check);&#13;
+void  VT8XSetCheckXPassChecksum(ulong check);&#13;
+ulong VT8XGetMailBoxState(void);&#13;
+void  debug(uchar dbgLevel, char *formatString, ...);&#13;
+#endif&#13;
+</HeaderBlock>
+					<MethodBodies/>
+				</CodeVariant>
+				<CodeVariant target="ES1130" generator="Implementation" implementationOID="_040qm002a8001l870k4g73v5ln400" implementationName="Impl">
+					<HeaderBlock>/******************************************************************************/&#13;
+/*                                                                            */&#13;
+/*      Libarary function for VT8X bypass configuration                       */&#13;
+/*                                                                            */&#13;
+/*      File:           VT8XUsap.h                                            */&#13;
+/*                                                                            */&#13;
+/*      Autor:          ETAS/ESW-LR                                           */&#13;
+/*                                                                            */&#13;
+/*      Datum:          03/1997                                               */&#13;
+/*                                                                            */&#13;
+/*      Projekt:        VT8X-Bypass                                           */&#13;
+/*                                                                            */&#13;
+/*      COPYRIGHT by ETAS GMBH &amp; Co.KG Stuttgart                              */&#13;
+/*                                                                            */&#13;
+/* Edition History                                                            */&#13;
+/*  #   Date    Changes                                                       */&#13;
+/* -- -------- -----------------------------------------------    ----------- */&#13;
+/* 01 98/07    Basic Installation                                             */&#13;
+/* 02 98/10    Additional irq mode                                            */&#13;
+/******************************************************************************/&#13;
+#ifndef VT8X_USAP_H&#13;
+#define VT8X_USAP_H&#13;
+&#13;
+/* irq levels */&#13;
+#ifndef VT8X_USAP_C&#13;
+#define IRQ_LEV_VT8X_USAP                5&#13;
+#define IRQ_VEC_VT8X_SIMU_REQ           91&#13;
+#define IRQ_VEC_VCAN0                   64&#13;
+#define IRQ_VEC_VCAN1                   65&#13;
+#define IRQ_VEC_VCAN2                   66&#13;
+#define IRQ_VEC_VCAN3                   67&#13;
+#define IRQ_VEC_VCAN4                   68&#13;
+#define IRQ_VEC_VCAN5                   77&#13;
+#define IRQ_VEC_VCAN6                   78&#13;
+#define IRQ_VEC_VCAN7                   79&#13;
+#endif&#13;
+&#13;
+/* debug switches */&#13;
+#define NO_DBG                          0xFF       /* 0xFF -&gt; no debug output */&#13;
+#define DBG                             0x01       /* normal debug output     */&#13;
+#define DBG_MBX                         0x02       /* mailBox debug           */&#13;
+#define DBG_BP                          0x04       /* bypass debug            */&#13;
+#define DBG_IRQ                         0x08       /* irq debug               */&#13;
+#define DBG_ALLWAYS                     0x00&#13;
+&#13;
+/* ASCET-SD specific basic declaration */&#13;
+#ifndef VT8X_USAP_C&#13;
+typedef unsigned char  uchar;&#13;
+typedef unsigned long  ulong;&#13;
+typedef struct {&#13;
+    unsigned long Addr,&#13;
+                  ByteSize;&#13;
+    } VT8X_SIGNAL;&#13;
+#endif&#13;
+&#13;
+/******************************************************************************/&#13;
+/*                     USAP functions                                         */&#13;
+/******************************************************************************/&#13;
+void           BoardSetup(void);&#13;
+unsigned short BoardVectorFetch(unsigned short level);&#13;
+&#13;
+/******************************************************************************/&#13;
+/*                     bypass functions                                       */&#13;
+/******************************************************************************/&#13;
+ulong VT8XInit(void);&#13;
+ulong VT8XExit(void);&#13;
+ulong VT8XStartCommunication(void);&#13;
+ulong VT8XWriteErrorMemory(uchar Len, uchar *Bytes);&#13;
+ulong VT8XBpWriteTable(uchar SdTskId,  uchar CpuTskId, uchar TypeOrPrio, &#13;
+                       uchar InSigNo,  VT8X_SIGNAL *InSigTab, &#13;
+                       uchar OutSigNo, VT8X_SIGNAL *OutSigTab);&#13;
+ulong VT8XBpStart(void);&#13;
+ulong VT8XBpStop(void);&#13;
+ulong VT8XLookForRequest(void);&#13;
+void  VT8XIntHandler(void);&#13;
+ulong VT8XBpRead(uchar CpuTskId, uchar *ByteLen, uchar *Data);&#13;
+ulong VT8XBpWrite(uchar CpuTskId, uchar ByteLen, uchar *Data);&#13;
+ulong VT8XGetError (char *errDscr);&#13;
+&#13;
+/******************************************************************************/&#13;
+/*                     lib configuration                                      */&#13;
+/******************************************************************************/&#13;
+void  VT8XActivateT8VmeDrv(void);&#13;
+void  VT8XSuspendT8VmeDrv(void);&#13;
+void  VT8XSetXPassLog(void);&#13;
+void  VT8XSetTerminalLog(void);&#13;
+void  VT8XSetDbgFilter(char mask);&#13;
+void  VT8XSetRxBlinkSID(char sid);&#13;
+void  VT8XSetBypassTaskTime(ulong timeMSec);&#13;
+void  VT8XSetCheckXPassPosResponse(ulong check);&#13;
+void  VT8XSetCheckXPassChecksum(ulong check);&#13;
+ulong VT8XGetMailBoxState(void);&#13;
+void  debug(uchar dbgLevel, char *formatString, ...);&#13;
+#endif&#13;
+</HeaderBlock>
+					<MethodBodies/>
+				</CodeVariant>
+				<CodeVariant target="ES1130" generator="Quantized" implementationOID="_040qm002a8001l870k4g73v5ln400" implementationName="Impl">
+					<HeaderBlock>/******************************************************************************/&#13;
+/*                                                                            */&#13;
+/*      Libarary function for VT8X bypass configuration                       */&#13;
+/*                                                                            */&#13;
+/*      File:           VT8XUsap.h                                            */&#13;
+/*                                                                            */&#13;
+/*      Autor:          ETAS/ESW-LR                                           */&#13;
+/*                                                                            */&#13;
+/*      Datum:          03/1997                                               */&#13;
+/*                                                                            */&#13;
+/*      Projekt:        VT8X-Bypass                                           */&#13;
+/*                                                                            */&#13;
+/*      COPYRIGHT by ETAS GMBH &amp; Co.KG Stuttgart                              */&#13;
+/*                                                                            */&#13;
+/* Edition History                                                            */&#13;
+/*  #   Date    Changes                                                       */&#13;
+/* -- -------- -----------------------------------------------    ----------- */&#13;
+/* 01 98/07    Basic Installation                                             */&#13;
+/* 02 98/10    Additional irq mode                                            */&#13;
+/******************************************************************************/&#13;
+#ifndef VT8X_USAP_H&#13;
+#define VT8X_USAP_H&#13;
+&#13;
+/* irq levels */&#13;
+#ifndef VT8X_USAP_C&#13;
+#define IRQ_LEV_VT8X_USAP                5&#13;
+#define IRQ_VEC_VT8X_SIMU_REQ           91&#13;
+#define IRQ_VEC_VCAN0                   64&#13;
+#define IRQ_VEC_VCAN1                   65&#13;
+#define IRQ_VEC_VCAN2                   66&#13;
+#define IRQ_VEC_VCAN3                   67&#13;
+#define IRQ_VEC_VCAN4                   68&#13;
+#define IRQ_VEC_VCAN5                   77&#13;
+#define IRQ_VEC_VCAN6                   78&#13;
+#define IRQ_VEC_VCAN7                   79&#13;
+#endif&#13;
+&#13;
+/* debug switches */&#13;
+#define NO_DBG                          0xFF       /* 0xFF -&gt; no debug output */&#13;
+#define DBG                             0x01       /* normal debug output     */&#13;
+#define DBG_MBX                         0x02       /* mailBox debug           */&#13;
+#define DBG_BP                          0x04       /* bypass debug            */&#13;
+#define DBG_IRQ                         0x08       /* irq debug               */&#13;
+#define DBG_ALLWAYS                     0x00&#13;
+&#13;
+/* ASCET-SD specific basic declaration */&#13;
+#ifndef VT8X_USAP_C&#13;
+typedef unsigned char  uchar;&#13;
+typedef unsigned long  ulong;&#13;
+typedef struct {&#13;
+    unsigned long Addr,&#13;
+                  ByteSize;&#13;
+    } VT8X_SIGNAL;&#13;
+#endif&#13;
+&#13;
+/******************************************************************************/&#13;
+/*                     USAP functions                                         */&#13;
+/******************************************************************************/&#13;
+void           BoardSetup(void);&#13;
+unsigned short BoardVectorFetch(unsigned short level);&#13;
+&#13;
+/******************************************************************************/&#13;
+/*                     bypass functions                                       */&#13;
+/******************************************************************************/&#13;
+ulong VT8XInit(void);&#13;
+ulong VT8XExit(void);&#13;
+ulong VT8XStartCommunication(void);&#13;
+ulong VT8XWriteErrorMemory(uchar Len, uchar *Bytes);&#13;
+ulong VT8XBpWriteTable(uchar SdTskId,  uchar CpuTskId, uchar TypeOrPrio, &#13;
+                       uchar InSigNo,  VT8X_SIGNAL *InSigTab, &#13;
+                       uchar OutSigNo, VT8X_SIGNAL *OutSigTab);&#13;
+ulong VT8XBpStart(void);&#13;
+ulong VT8XBpStop(void);&#13;
+ulong VT8XLookForRequest(void);&#13;
+void  VT8XIntHandler(void);&#13;
+ulong VT8XBpRead(uchar CpuTskId, uchar *ByteLen, uchar *Data);&#13;
+ulong VT8XBpWrite(uchar CpuTskId, uchar ByteLen, uchar *Data);&#13;
+ulong VT8XGetError (char *errDscr);&#13;
+&#13;
+/******************************************************************************/&#13;
+/*                     lib configuration                                      */&#13;
+/******************************************************************************/&#13;
+void  VT8XActivateT8VmeDrv(void);&#13;
+void  VT8XSuspendT8VmeDrv(void);&#13;
+void  VT8XSetXPassLog(void);&#13;
+void  VT8XSetTerminalLog(void);&#13;
+void  VT8XSetDbgFilter(char mask);&#13;
+void  VT8XSetRxBlinkSID(char sid);&#13;
+void  VT8XSetBypassTaskTime(ulong timeMSec);&#13;
+void  VT8XSetCheckXPassPosResponse(ulong check);&#13;
+void  VT8XSetCheckXPassChecksum(ulong check);&#13;
+ulong VT8XGetMailBoxState(void);&#13;
+void  debug(uchar dbgLevel, char *formatString, ...);&#13;
+#endif&#13;
+</HeaderBlock>
+					<MethodBodies/>
+				</CodeVariant>
+				<CodeVariant target="G_ANSI" generator="Object" implementationOID="_040qm002a8001l870k4g73v5ln400" implementationName="Impl">
+					<HeaderBlock></HeaderBlock>
+					<MethodBodies/>
+				</CodeVariant>
+				<CodeVariant target="G_TMS470" generator="Object" implementationOID="_040qm002a8001l870k4g73v5ln400" implementationName="Impl">
+					<HeaderBlock></HeaderBlock>
+					<MethodBodies/>
+				</CodeVariant>
+			</CCode>
+		</CCodeSpecification>
+	</Specification>
+	<Signature xmlns="http://www.w3.org/2000/09/xmldsig#">
+		<SignedInfo>
+			<CanonicalizationMethod Algorithm="http://www.w3.org/TR/2001/REC-xml-c14n-20010315"/>
+			<SignatureMethod Algorithm="http://www.w3.org/2000/09/xmldsig#rsa-sha1"/>
+			<Reference>
+				<Transforms>
+					<Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature"/>
+				</Transforms>
+				<DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1"/>
+				<DigestValue>e0hV5On9GzPpDVu3eNrHlsP3gUY=</DigestValue>
+			</Reference>
+		</SignedInfo>
+		<SignatureValue>LmClBYVdCl2WPITcWURwbesgZSKYBdenU6viCR/xF8MliOwDXl7HtWSG3AcoJA75
+BdoPBH3HG+7FUMZRu7GJg32mlev7kRJlASlEX02DP7fytXHWIk6EabDe1jVkeLKk
+6semcTbvC0u3oOlwIZFitURVvLsjaQijTaNy6uqkJH4E1iJcsIaWkOnSp3iUYdtC
+h40zfU4AEnTqj1brJY3mqUKdBypCT5z7062/g6B2Azf6Kl2QU038oQcOQqHDchgu
+00LBZTVH6Pd5dIurPByU+Npq2TeMwkR/LvCMHYJBVTQZ4K8C51Zd6SmbmTdgas0i
+A/4ydS/SlQQcR6LL+NIbcA==</SignatureValue>
+		<KeyInfo>
+			<KeyName>Etas Ascet Verification</KeyName>
+		</KeyInfo>
+	</Signature>
+</Specifications>

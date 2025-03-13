@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ImplementationTypes toolVersion="V6.1.4_CS_SR48" schemaVersion="5.1.4.0">
+	<Signature xmlns="http://www.w3.org/2000/09/xmldsig#">
+		<SignedInfo>
+			<CanonicalizationMethod Algorithm="http://www.w3.org/TR/2001/REC-xml-c14n-20010315"/>
+			<SignatureMethod Algorithm="http://www.w3.org/2000/09/xmldsig#rsa-sha1"/>
+			<Reference>
+				<Transforms>
+					<Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature"/>
+				</Transforms>
+				<DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1"/>
+				<DigestValue>JftxS+JCN5cMuRCnJPR6IaL8qUk=</DigestValue>
+			</Reference>
+		</SignedInfo>
+		<SignatureValue>DFjBDq0Nh6O50XAsihDnWcemLupILbgvhIBDzkJoQPwGCdpLMHKG+YHThbEQYpEB
+jKV5Zw8dgJxB3gkC4klscZMloPOpFO1jQJSMR24mTllpefICv8oGnwQqg/GFp0GW
+LuBwwHtSqqZZ8egkywcCz2ecrDSvBkwbh+S7p4RZavgFd+DCl3Yu+uuDH1Y33AEV
+aKi6rea49cNE7JIGxhYqXz1g1e9GaVTRq+7eU9Zx8XHR8PQewnZZxoPagB58KmkH
++uS3WBZOLvoZfPG64u6nX73fg0TBmtrsUGr6JUy/MYkcsFzZrAn0nwppurg2QlXA
+zbrMXtCjdc/H6Zb3PZZADg==</SignatureValue>
+		<KeyInfo>
+			<KeyName>Etas Ascet Verification</KeyName>
+		</KeyInfo>
+	</Signature>
+</ImplementationTypes>

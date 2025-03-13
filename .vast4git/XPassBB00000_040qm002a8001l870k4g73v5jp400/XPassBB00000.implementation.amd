@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ComponentImplementation toolVersion="V6.1.4_CS_SR48" schemaVersion="6.1.0.1">
+	<ImplementationSet name="XPassBB00000" default="false" classConfig="true" memoryLocation="Default" generateMethodBody="true" optimizeMethodCalls="true" usingServiceRoutines="false" hierarchicalGenerationForSM="true" outlineMethodsSM="false" inlinePrivateMethodsSM="true" generateDataStructures="true" cacheLocking="automatic" userDefinedOrder="false" OID="_040qm002a8001l870k4g73v61f600">
+		<TimeStamp timeStampKey="applicationTimeStamp" timeStampValue="2024-06-28T10:17:26" timeStampCounter="653"/>
+		<ImplementationEntry>
+			<ImplementationVariant name="default">
+				<ElementImplementation elementName="myXPassInterfaceMessage" elementOID="_040qm01g70001lo71g2g5gq36it08">
+					<ScalarImplementation>
+						<NumericImplementation limitAssignments="true" isLimitOverflow="true" limitOverflow="automatic" memoryLocationInstance="Default" additionalInformation="" cacheLocking="automatic" quantization="0" formula="ident" master="Model" physType="real64" implType="real64" zeroNotIncluded="false">
+							<PhysicalInterval min="-INF" max="INF"/>
+							<ImplementationInterval min="-INF" max="INF"/>
+						</NumericImplementation>
+					</ScalarImplementation>
+				</ElementImplementation>
+			</ImplementationVariant>
+		</ImplementationEntry>
+	</ImplementationSet>
+	<ImplementationSet name="Impl" default="true" classConfig="false" memoryLocation="Default" generateMethodBody="true" optimizeMethodCalls="true" usingServiceRoutines="false" hierarchicalGenerationForSM="true" outlineMethodsSM="false" inlinePrivateMethodsSM="true" generateDataStructures="true" cacheLocking="automatic" userDefinedOrder="false" OID="_040qm002a8001l870k4g73v5ln400">
+		<TimeStamp timeStampKey="applicationTimeStamp" timeStampValue="2024-06-28T10:17:26" timeStampCounter="656"/>
+	</ImplementationSet>
+	<Signature xmlns="http://www.w3.org/2000/09/xmldsig#">
+		<SignedInfo>
+			<CanonicalizationMethod Algorithm="http://www.w3.org/TR/2001/REC-xml-c14n-20010315"/>
+			<SignatureMethod Algorithm="http://www.w3.org/2000/09/xmldsig#rsa-sha1"/>
+			<Reference>
+				<Transforms>
+					<Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature"/>
+				</Transforms>
+				<DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1"/>
+				<DigestValue>nIqcuOXHt3WdqEpV+QeaL7BDu5E=</DigestValue>
+			</Reference>
+		</SignedInfo>
+		<SignatureValue>mpiwU/c0q1NbWd3/PaTGmA8WU0NtR5BedhuH5QSUZDigsEU41/mp3lg5DC10Ew+y
+0UkW+CUPczSBmXfnROzobBPr4CmkFD1fdGk/kyABYPlG93FaYvs6C+KNPshcC8yw
+kGanh8g/yoATtCx3uM2q6RvL/pVHETbtCd1JurUanpY2Af4jTVBXqPBsUIjTNVHp
+eSNmq0eUO0LQv8BzsE6jenc9KoRNz0NHYhVrGZeDLLYO43CvRH8iP82HSdYWU6AR
+DYeY5TYO2uI1AbKMAxqYD+WBRWaUHHLgYS3unTTEgm8nnT2xG0b12u9ZdZ7NytMU
+SfreW7EkYRMSAst8pGzsew==</SignatureValue>
+		<KeyInfo>
+			<KeyName>Etas Ascet Verification</KeyName>
+		</KeyInfo>
+	</Signature>
+</ComponentImplementation>

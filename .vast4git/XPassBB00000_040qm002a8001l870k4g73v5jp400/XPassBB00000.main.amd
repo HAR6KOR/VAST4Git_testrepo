@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ComponentMain toolVersion="V6.1.4_CS_SR48" schemaVersion="6.1.1.0">
+	<Component name="XPassBB00000" nameSpace="/Test_Project" OID="_040qm002a8001l870k4g73v5jp400" timeStamp="2024-06-28T10:17:27" componentType="ASCET_Module" specificationType="CCode" defaultProjectName="XPassBB00000_DEFAULT" defaultProjectOID="_040qm002a8001l870k4g73v61f6g0">
+		<TimeStamp timeStampKey="applicationTimeStamp" timeStampValue="2024-06-28T10:17:27" timeStampCounter="683"/>
+		<Comment>General XPASS-Module for CreateArchive tests (based on ALFA-XPASS)</Comment>
+		<Notes>
+			<Note name="default">
+				<Text>BB28433  Punto serial Line&#13;
+(APL_ASAP_BB28433_V0213_EMC_XPASS)&#13;
+X-Pass für EA101&#13;
+&#13;
+Stichworte:&#13;
+Fiat&#13;
+aktive DFs&#13;
+Fiat VSO&#13;
+Vxx_CAN&#13;
+Wheelcircumference</Text>
+			</Note>
+			<Note name="2007.12.05 20:14:33 Current Changes">
+				<Text>This text is generated automatically!&#13;
+Only text in the what- and why-field&#13;
+is allowed to be edited!&#13;
+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=&#13;
+---------------------------------------&#13;
+Edition      : E1.1&#13;
+ASCET Version: V5.1&#13;
+Author       : rij2abt&#13;
+When         : 2007.12.05 20:14:33&#13;
+---------------------------------------&#13;
+What: &#13;
+Why : &#13;
+---------------------------------------&#13;
+OID     : 040qm002a8001l870k4g73v5jp400</Text>
+			</Note>
+			<Note name="2006.06.08 15:56:41 Item-History">
+				<Text>This text is generated automatically!&#13;
+Only text in the what- and why-field&#13;
+is allowed to be edited!&#13;
+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=&#13;
+edition#: E1.0&#13;
+ASCET_version: V5.1&#13;
+author: rij2abt&#13;
+when:2006.06.08 15:56:43&#13;
+what:&#13;
+&#13;
+why:&#13;
+&#13;
+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=&#13;
+version#: V1.1&#13;
+ASCET_version: V5.1&#13;
+author: rij2abt&#13;
+when:2006.06.13 09:23:24&#13;
+what:&#13;
+emptied ASW-PSW interface&#13;
+For Ascet 5.1 only&#13;
+why:&#13;
+in order to speed up release test&#13;
+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=&#13;
+---------------------------------------&#13;
+Edition      : E1.1&#13;
+ASCET Version: V5.1&#13;
+Author       : rij2abt&#13;
+When         : 2007.12.05 20:14:33&#13;
+---------------------------------------&#13;
+What: &#13;
+Why : &#13;
+---------------------------------------&#13;
+OID     : 040qm002a8001l870k4g73v5jp400&#13;
+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=&#13;
+---------------------------------------&#13;
+Version      : V1.2&#13;
+ASCET Version: V5.1&#13;
+Author       : rij2abt&#13;
+When         : 2007.12.05 20:15:04&#13;
+---------------------------------------&#13;
+What: &#13;
+Why : &#13;
+---------------------------------------&#13;
+OID     : 040qm002a8001l870k4g73v5jp400</Text>
+			</Note>
+			<Note name="ASCET-SCM-TCM">
+				<Text>&lt;VersionInfos&gt;&#13;
+  &lt;VersionInfo&gt;&#13;
+    &lt;Name&gt;XPassBB00000&lt;/Name&gt;&#13;
+    &lt;Number&gt;1.7&lt;/Number&gt;&#13;
+    &lt;State&gt;version&lt;/State&gt;&#13;
+    &lt;Valid&gt;yes&lt;/Valid&gt;&#13;
+    &lt;Oid&gt;040qm002a8001l870k4g73v5jp400&lt;/Oid&gt;&#13;
+    &lt;Timestamp&gt;2018-09-21T07:08:06&lt;/Timestamp&gt;&#13;
+  &lt;/VersionInfo&gt;&#13;
+  &lt;VersionInfo&gt;&#13;
+    &lt;Name&gt;XPassBB00000&lt;/Name&gt;&#13;
+    &lt;Number&gt;3.1&lt;/Number&gt;&#13;
+    &lt;State&gt;version&lt;/State&gt;&#13;
+    &lt;Valid&gt;yes&lt;/Valid&gt;&#13;
+    &lt;Oid&gt;040qm002a8001l870k4g73v5jp400&lt;/Oid&gt;&#13;
+    &lt;Timestamp&gt;2011-03-08T17:14:12&lt;/Timestamp&gt;&#13;
+  &lt;/VersionInfo&gt;&#13;
+&lt;/VersionInfos&gt;</Text>
+				<View name="view"/>
+			</Note>
+		</Notes>
+		<CustomerSpecificAttributes>
+			<ConfigurationManagement edition="false" versionID="V1.7" configurationID=""/>
+			<RequirementsManagement requirementsID=""/>
+			<AccessManagement read="true" write="true" import="true"/>
+		</CustomerSpecificAttributes>
+		<Elements>
+			<Element name="myXPassInterfaceMessage" OID="_040qm01g70001lo71g2g5gq36it08" ignore="false">
+				<Comment></Comment>
+				<ElementAttributes modelType="scalar" basicModelType="cont" unit="">
+					<ScalarType>
+						<PrimitiveAttributes kind="message" scope="exported" virtual="false" dependent="false" volatile="true" calibrated="true" set="false" get="false" read="false" write="true" reference="false"/>
+					</ScalarType>
+				</ElementAttributes>
+			</Element>
+		</Elements>
+		<MethodSignatures/>
+		<TimeStamps>
+			<TimeStamp timeStampKey="directAccessTimeStampKey" timeStampValue="2024-06-28T10:17:27"/>
+			<TimeStamp timeStampKey="exportImportTimeStampKey" timeStampValue="2024-06-28T10:17:27"/>
+			<TimeStamp timeStampKey="formulaTimeStampKey" timeStampValue="2024-06-28T10:17:27"/>
+			<TimeStamp timeStampKey="implementationCastTimeStampKey" timeStampValue="2024-06-28T10:17:27"/>
+			<TimeStamp timeStampKey="implementationTypeTimeStampKey" timeStampValue="2024-06-28T10:17:27"/>
+			<TimeStamp timeStampKey="methodsTimeStampKey" timeStampValue="2024-06-28T10:17:27"/>
+		</TimeStamps>
+	</Component>
+	<Signature xmlns="http://www.w3.org/2000/09/xmldsig#">
+		<SignedInfo>
+			<CanonicalizationMethod Algorithm="http://www.w3.org/TR/2001/REC-xml-c14n-20010315"/>
+			<SignatureMethod Algorithm="http://www.w3.org/2000/09/xmldsig#rsa-sha1"/>
+			<Reference>
+				<Transforms>
+					<Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature"/>
+				</Transforms>
+				<DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1"/>
+				<DigestValue>KEvV/viSf7etH9rclF0wJJ+3VcQ=</DigestValue>
+			</Reference>
+		</SignedInfo>
+		<SignatureValue>T56TUBsIoBzQMtngRIckYFfAL7FovQV8onNW4p1WH3VeHPJWtvjNVOjnJ3KUCdgw
+l9ObAAqQt9J4t42lOR+XFi5/2JFCBcZLJzGZ6/gZqjGZocGjvQ1le7i/1XXKwcHQ
+bJkud9CG4q6SVKFFumVEoi22QCIitKD+bJPgMXTHfE+7/9y8L+ZkUxcAp4Hs355N
+o0iHhG6znIeL2sy1yIL4XPMyOO9mRg7S8LIZy0opC3Uog12dsLXOztXwK86s0Egf
+zewwcwdI5t4E/PnSy+7l31H7bw8pDKk+6roTxBeTBcc6vtxIzUFJ9cEKLQvQgbML
+BxWYreGaIxJJFQu5WhoQVA==</SignatureValue>
+		<KeyInfo>
+			<KeyName>Etas Ascet Verification</KeyName>
+		</KeyInfo>
+	</Signature>
+</ComponentMain>

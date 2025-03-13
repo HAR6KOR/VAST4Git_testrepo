@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Project toolVersion="V6.1.4_CS_SR48" schemaVersion="6.1.0.0" buildConfigKey="PC_BORLANDCV45_1_ttfttft_1000_">
+	<ImplementationConfiguration implementationSetName="Impl" implementationSetOID="_040qm002a8001l870k4g73v63f8g0"/>
+	<DataConfiguration dataSetName="Data" dataSetOID="_040qm002a8001l870k4g73v61f800"/>
+	<OsLogic>
+		<OsEntry>
+			<TargetKey name="PC.Generic"/>
+			<OsDescription coopLevels="20" preempLevels="0" eventLevels="0" enableMonitoring="true" enableTickDuration="true" tickDuration="1000000000">
+				<OperationModes>
+					<OperationMode name="inactive" id="0" isStartMode="false" isCTMode="false"/>
+					<OperationMode name="active" id="1" isStartMode="true" isCTMode="true"/>
+				</OperationModes>
+				<Tasks/>
+				<OsSettings>
+					<Group name="OperatingSystem">
+						<Option name="AR_XML_CONFIG_FILE" type="String" value=""/>
+						<Option name="DO_ARXML_CONFIG" type="boolean" value="false"/>
+						<Option name="DO_OS_CONFIG" type="boolean" value="false"/>
+						<Option name="OS_CONFIG_TOOL_CMD" type="String" value=""/>
+						<Option name="OS_LIBS" type="String" value=""/>
+						<Option name="OS_TEMPLATE" type="String" value=""/>
+						<Option name="osType" type="String" value="Generic"/>
+						<Option name="P_OS_INCLUDE" type="String" value=""/>
+						<Option name="P_OS_LIBRARY" type="String" value=""/>
+						<Option name="PROJ_OIL_FILE" type="String" value=""/>
+					</Group>
+				</OsSettings>
+			</OsDescription>
+		</OsEntry>
+	</OsLogic>
+	<ModelConfiguration>
+		<FormulasFile type="FORMULA">XPassBB00000.project.formulas.dp.amd</FormulasFile>
+		<ImplementationTypesFile type="IMPLEMENTATION">XPassBB00000.project.implementationTypes.dp.amd</ImplementationTypesFile>
+	</ModelConfiguration>
+	<BuildConfiguration buildConfigKey="PC_BORLANDCV45_1_ttfttft_1000_">
+		<Platform platformKey="PC_BORLANDCV45_unknown">
+			<Target name="PC" key="PC"/>
+			<Compiler name="BORLANDCV45" path="c:\TSDCT\ETAS\ASCET\V6_1_4\Tools\Compiler\bc\"/>
+			<CodeGenerator type="PHYSICAL_EXPERIMENT"/>
+		</Platform>
+		<BuildSettings>
+			<Group name="build">
+				<Option name="castStrategy" type="String" value="Legacy"/>
+				<Option name="dataLogging" type="boolean" value="false"/>
+				<Option name="definesForEnumValues" type="boolean" value="false"/>
+				<Option name="generateMapFile" type="boolean" value="true"/>
+				<Option name="generateMethodsDT" type="boolean" value="true"/>
+				<Option name="maxLoopIterate" type="int" value="1000"/>
+				<Option name="needsIntegerCode" type="boolean" value="true"/>
+				<Option name="needsIntegerType" type="boolean" value="true"/>
+				<Option name="oneHeaderOnly" type="boolean" value="false"/>
+				<Option name="oneModuleOnly" type="boolean" value="false"/>
+				<Option name="optimizeMultipleLevelDirectAccess" type="boolean" value="false"/>
+				<Option name="optimizeOneLevelDirectAccess" type="boolean" value="false"/>
+				<Option name="prefixComponentName" type="String" value=""/>
+				<Option name="protectDiv" type="boolean" value="true"/>
+				<Option name="protectDivSignedOverflow" type="boolean" value="false"/>
+				<Option name="protectVecIndex" type="boolean" value="true"/>
+				<Option name="useGlobalId" type="boolean" value="true"/>
+				<Option name="useLongNames" type="boolean" value="true"/>
+				<Option name="warningLevel" type="int" value="1"/>
+			</Group>
+			<Group name="codeOptimization">
+				<Option name="commonSubexpressionElimination" type="boolean" value="true"/>
+				<Option name="constantFoldingOnArithmeticOperations" type="boolean" value="true"/>
+				<Option name="constantFoldingOnControlFlow" type="boolean" value="true"/>
+				<Option name="constantFoldingOnLogicalOperations" type="boolean" value="true"/>
+				<Option name="operatorSimplificatonGeneral" type="boolean" value="true"/>
+				<Option name="operatorSimplificatonRespectIntervals" type="boolean" value="true"/>
+				<Option name="optimizeMultipleLevelDirectAccess" type="boolean" value="false"/>
+				<Option name="optimizeOneLevelDirectAccess" type="boolean" value="false"/>
+				<Option name="optimizeStaticActionsForSM" type="boolean" value="false"/>
+				<Option name="outlineAutomaticallyGeneratedMethodsForSM" type="boolean" value="false"/>
+			</Group>
+		</BuildSettings>
+	</BuildConfiguration>
+	<SimulationConfiguration experimentTarget="ExperimentOfflinePC"/>
+	<HiddenMessageTypes/>
+	<IgnoredMessageTypes/>
+	<PromotedToErrorMessageTypes/>
+	<PromotedToWarningMessageTypes/>
+	<Signature xmlns="http://www.w3.org/2000/09/xmldsig#">
+		<SignedInfo>
+			<CanonicalizationMethod Algorithm="http://www.w3.org/TR/2001/REC-xml-c14n-20010315"/>
+			<SignatureMethod Algorithm="http://www.w3.org/2000/09/xmldsig#rsa-sha1"/>
+			<Reference>
+				<Transforms>
+					<Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature"/>
+				</Transforms>
+				<DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1"/>
+				<DigestValue>+2ilcUyuRhy7QIsQoqnrk94PVbk=</DigestValue>
+			</Reference>
+		</SignedInfo>
+		<SignatureValue>G+8qDnuB14xzS6GZU3yB+wHa2qhVuaENFgAHxQ8DDg9d+sOiLyYvpMIAiI1wBG/0
+CdeC+Mtmunfem6mKRjIWyzy5bl+xDsmz2oFJ2OP8V5sSfSW4+wyjASMjv4/R4gwn
+CE6aH7n9RiB0TmwOUaZSU6waLUk9q4x+mWw6b0S4C3Ecc+LDSpIpx2VJnqhEQl0t
+np+KpW+sbSBWQW4/CxyW0NNdi3NzGgl1ATgiAyY30MY2r9rPiKfVgiRih8+oakY1
+yL6wCSUvLaB3GqzKt8IYN2fs8rZ7uCPZtnGr/aLJDc+X6xN2+rZg2DP6NyqCzxpX
+pQJTiqyF7LcfMl34Z4alxA==</SignatureValue>
+		<KeyInfo>
+			<KeyName>Etas Ascet Verification</KeyName>
+		</KeyInfo>
+	</Signature>
+</Project>
